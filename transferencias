@@ -1,0 +1,88 @@
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+
+const transfers = [
+  {
+    id: 1,
+    name: 'Bradley Beal',
+    fromTeamLogo: require('./assets/Washington_Wizards.png'), 
+    toTeamLogo: require('./assets/suns.png'), 
+    playerPhoto: require('./assets/bradley.jpeg'), 
+  },
+  {
+    id: 2,
+    name: 'Kevin Durant',
+    fromTeamLogo: require('./assets/nets.png'), 
+    toTeamLogo: require('./assets/suns.png'), 
+    playerPhoto: require('./assets/kevin.jpeg'), 
+  },
+];
+
+export default function App() {
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Transferências</Text>
+      </View>
+      
+      {transfers.map((transfer) => (
+        <View key={transfer.id} style={styles.transferContainer}>
+          <Image source={transfer.playerPhoto} style={styles.playerPhoto} />
+          <Text style={styles.playerName}>{transfer.name}</Text>
+          <View style={styles.teamContainer}>
+            <Image source={transfer.fromTeamLogo} style={styles.teamLogo} />
+            <Text style={styles.arrow}>→</Text>
+            <Image source={transfer.toTeamLogo} style={styles.teamLogo} />
+          </View>
+        </View>
+      ))}
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#3d3d3d',
+  },
+  header: {
+    backgroundColor: '#2c2c2c',
+    padding: 15,
+    alignItems: 'center',
+  },
+  headerText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  transferContainer: {
+    backgroundColor: '#4a4a4a',
+    padding: 20,
+    margin: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  playerPhoto: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    marginBottom: 10,
+  },
+  playerName: {
+    fontSize: 18,
+    color: 'white',
+    marginBottom: 10,
+  },
+  teamContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  teamLogo: {
+    width: 50,
+    height: 50,
+  },
+  arrow: {
+    fontSize: 24,
+    color: 'white',
+    marginHorizontal: 10,
+  },
+});
