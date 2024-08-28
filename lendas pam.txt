@@ -1,0 +1,99 @@
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+
+const legends = [
+  {
+    id: 1,
+    name: 'Michael Jordan',
+    image: require('./assets/michael.jpg'),
+    position: '1°',
+  },
+  {
+    id: 2,
+    name: 'Kobe Bryant',
+    image: require('./assets/kobe.jpeg'),
+    position: '2°',
+  },
+  {
+    id: 3,
+    name: 'Lebron',
+    image: require('./assets/lebron.jpg'),
+    position: '3°',
+  },
+  {
+    id: 4,
+    name: 'Magic Johnson',
+    image: require('./assets/magic.jpeg'), 
+    position: '4°',
+  },
+  {
+    id: 5,
+    name: 'Larry Bird',
+    image: require('./assets/larry.jpg'),
+    position: '5°',
+  },
+  {
+    id: 6,
+    name: 'Shaquille O´Neal',
+    image: require('./assets/oneal.jpeg'), 
+    position: '6°',
+  },
+];
+
+export default function App() {
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Lendas</Text>
+      </View>
+      
+      {legends.map((legend) => (
+        <View key={legend.id} style={styles.legendContainer}>
+          <Text style={styles.positionText}>{legend.position}</Text>
+          <Image source={legend.image} style={styles.legendPhoto} />
+          <Text style={styles.legendName}>{legend.name}</Text>
+        </View>
+      ))}
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#3d3d3d',
+  },
+  header: {
+    backgroundColor: '#2c2c2c',
+    padding: 15,
+    alignItems: 'center',
+  },
+  headerText: {
+    color: '#ffcc00',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  legendContainer: {
+    backgroundColor: '#4a4a4a',
+    padding: 15,
+    margin: 10,
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  positionText: {
+    fontSize: 20,
+    color: '#ffcc00',
+    marginRight: 10,
+  },
+  legendPhoto: {
+    width: 80,
+    height: 80,
+    borderRadius: 50,
+    marginRight: 10,
+  },
+  legendName: {
+    fontSize: 18,
+    color: '#ffcc00',
+    textDecorationLine: 'underline',
+  },
+});
