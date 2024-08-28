@@ -1,0 +1,109 @@
+import React from 'react';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+
+const scorers = [
+  {
+    id: 1,
+    name: 'Lebron',
+    image: require('./assets/lebron.jpg'),
+    points: '75pts',
+  },
+  {
+    id: 2,
+    name: 'Curry',
+    image: require('./assets/curry.jpeg'),
+    points: '70pts',
+  },
+  {
+    id: 3,
+    name: 'Doncic',
+    image: require('./assets/luka.jpeg'),
+    points: '64pts',
+  },
+];
+
+const assistants = [
+  {
+    id: 1,
+    name: 'Curry',
+    image: require('./assets/curry.jpeg'),
+    assists: '21ast',
+  },
+  {
+    id: 2,
+    name: 'Lebron',
+    image: require('./assets/lebron.jpg'),
+    assists: '15ast',
+  },
+];
+
+export default function App() {
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Artilheiros</Text>
+        {scorers.map((player) => (
+          <View key={player.id} style={styles.playerContainer}>
+            <Image source={player.image} style={styles.playerPhoto} />
+            <Text style={styles.playerName}>{player.name}</Text>
+            <Text style={styles.playerStat}>{player.points}</Text>
+          </View>
+        ))}
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Assistentes</Text>
+        {assistants.map((player) => (
+          <View key={player.id} style={styles.playerContainer}>
+            <Image source={player.image} style={styles.playerPhoto} />
+            <Text style={styles.playerName}>{player.name}</Text>
+            <Text style={styles.playerStat}>{player.assists}</Text>
+          </View>
+        ))}
+      </View>
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#3d3d3d',
+  },
+  section: {
+    marginVertical: 20,
+    paddingHorizontal: 15,
+  },
+  sectionTitle: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  playerContainer: {
+    backgroundColor: '#4a4a4a',
+    padding: 15,
+    marginVertical: 5,
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  playerPhoto: {
+    width: 75,
+    height: 75,
+    borderRadius: 40,
+    marginRight: 10,
+  },
+  playerName: {
+    fontSize: 18,
+    color: 'white',
+    textDecorationLine: 'underline',
+    flex: 1,
+  },
+  playerStat: {
+    fontSize: 18,
+    color: 'white',
+  },
+});
